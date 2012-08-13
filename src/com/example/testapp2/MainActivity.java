@@ -18,6 +18,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.view.Menu;
 import android.view.View;
@@ -48,8 +49,8 @@ public class MainActivity extends MapActivity implements OnClickListener, OnSeek
         Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         if(location == null) {
         	location = new Location(LocationManager.GPS_PROVIDER);
-        	location.setLatitude(20.894722);
-        	location.setLongitude(-156.47);
+        	location.setLatitude(38.954444);
+        	location.setLongitude(-77.346389);
         }
         GeoPoint center = new GeoPoint((int)(location.getLatitude() * 1E6),(int)(location.getLongitude() * 1E6));
         
@@ -158,6 +159,11 @@ public class MainActivity extends MapActivity implements OnClickListener, OnSeek
 							
 							AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
 							dialog.setTitle("Showing " + hotspots.length() + " of " + metadata.getInt("count"));
+							dialog.setNegativeButton("Close", new DialogInterface.OnClickListener() {
+								 public void onClick(DialogInterface dialog, int id) {
+									 dialog.cancel();
+								 }
+							  });
 							//dialog.setMessage("Total Records: " + metadata.getInt("count") + "\nUnique Species: " + metadata.getInt("unique"));
 							dialog.show();
 							

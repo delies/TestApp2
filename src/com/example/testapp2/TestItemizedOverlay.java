@@ -60,7 +60,7 @@ public class TestItemizedOverlay extends ItemizedOverlay {
 	  AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
 	  TextView tv = (TextView) ((Activity)mContext).findViewById(R.layout.alert_title);
 	  dialog.setTitle(item.getTitle());
-	 dialog.setMessage(item.getSnippet());
+	  dialog.setMessage(item.getSnippet());
 	  dialog.setNegativeButton("Close", new DialogInterface.OnClickListener() {
 		 public void onClick(DialogInterface dialog, int id) {
 			 dialog.cancel();
